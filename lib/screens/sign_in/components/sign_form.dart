@@ -130,21 +130,21 @@ class _SignFormState extends State<SignForm> {
         onSaved: (newValue) => email = newValue!,
         onChanged: (value) {
           if (value.isNotEmpty && errors.contains(kEmailNullError)) {
-              errors.remove(kEmailNullError);
+              removeError(error: kEmailNullError);
           } else if (emailValidatorRegExp.hasMatch(value) &&
               errors.contains(kInvalidEmailError)) {
-              errors.remove(kInvalidEmailError);
+              removeError(error: kInvalidEmailError);
           }
           return;
         },
         validator: (value) {
           if (value!.isEmpty && !errors.contains(kEmailNullError)) {
-              errors.add(kEmailNullError);
+              addError(error: kEmailNullError);
             return "";
           } else if (!emailValidatorRegExp.hasMatch(value) &&
               !errors.contains(kInvalidEmailError) &&
               !errors.contains(kEmailNullError)) {
-              errors.add(kInvalidEmailError);
+              addError(error: kInvalidEmailError);
             return "";
           }
           return null;

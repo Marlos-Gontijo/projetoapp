@@ -1,3 +1,4 @@
+import 'package:completeecommerce/screens/complete_profile/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_suffix_icon.dart';
@@ -55,7 +56,7 @@ class _SignUpFormState extends State<SignUpForm> {
               text: "Continue",
               press: () {
                 if (_formKey.currentState!.validate()) {
-                  // Go to complete profile page
+                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
                 }
               }
           )
@@ -78,7 +79,7 @@ class _SignUpFormState extends State<SignUpForm> {
           if (value!.isEmpty) {
             addError(error: kPassNullError);
             return "";
-          } else if ((password != confirmPassword)) {
+          } else if ((password != value)) {
             addError(error: kMatchPassError);
             return "";
           }
